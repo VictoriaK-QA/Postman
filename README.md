@@ -36,7 +36,7 @@ response:
 
 ---
 
-EP_2
++ EP_2
 
 <b>Method:</b> <code> <b>POST</b> </code>
 
@@ -62,7 +62,8 @@ response:
 
 ---
 
-EP_3
++ EP_3
+
 
 <b>Method:</b> <code> <b>GET</b> </code>
 
@@ -87,7 +88,8 @@ response:
 
 ---
 
-EP_4
++ EP_4
+
 <b>Method:</b> <code> <b>GET</b> </code>
 
 <b>EndPoint:</b> <code> <b>/object_info_2</b> </code>
@@ -116,7 +118,8 @@ response:
 
 ---
 
-EP_5
++ EP_5
+
 <b>Method:</b> <code> <b>GET</b> </code>
 
 <b>EndPoint:</b> <code> <b>/object_info_3</b> </code>
@@ -146,7 +149,8 @@ response:
 
 ---
 
-EP_6
++ EP_6
+
 <b>Method:</b> <code> <b>GET</b> </code>
 
 <b>EndPoint:</b> <code> <b>/object_info_4</b> </code>
@@ -169,7 +173,8 @@ response:
 
 ---
 
-EP_7
++ EP_7
+
 <b>Method:</b> <code> <b>POST</b> </code>
 
 <b>EndPoint:</b> <code> <b>/user_info_2</b> </code>
@@ -203,12 +208,12 @@ response:
 
   <summary>POSTMAN HW#2</summary>
 
-http://162.55.220.72:5005/first
+:one: http://162.55.220.72:5005/first
 1. Отправить запрос.
 2. Статус код 200
 3. Проверить, что в body приходит правильный string.
 
-http://162.55.220.72:5005/user_info_3
+:two: http://162.55.220.72:5005/user_info_3
 1. Отправить запрос.
 2. Статус код 200
 3. Спарсить response body в json.
@@ -222,7 +227,7 @@ http://162.55.220.72:5005/user_info_3
 11. Вывести в консоль параметр family из response.
 12. Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)
 
-http://162.55.220.72:5005/object_info_3
+:three: http://162.55.220.72:5005/object_info_3
 1. Отправить запрос.
 2. Статус код 200
 3. Спарсить response body в json.
@@ -238,7 +243,7 @@ http://162.55.220.72:5005/object_info_3
 
 ---
 
-http://162.55.220.72:5005/object_info_4
+:four: http://162.55.220.72:5005/object_info_4
 1. Отправить запрос.
 2. Статус код 200
 3. Спарсить response body в json.
@@ -263,7 +268,7 @@ http://162.55.220.72:5005/object_info_4
 
 ---
 
-http://162.55.220.72:5005/user_info_2
+:five: http://162.55.220.72:5005/user_info_2
 1. Вставить параметр salary из окружения в request
 2. Вставить параметр age из окружения в age
 3. Вставить параметр name из окружения в name
@@ -296,7 +301,7 @@ http://162.55.220.72:5005/user_info_2
 
   <summary>POSTMAN HW#3</summary>
 
-1. Необходимо залогиниться
+:one: Необходимо залогиниться
 
 POST
 http://162.55.220.72:5005/login
@@ -311,7 +316,7 @@ password : str
 
 ---
 
-2. http://162.55.220.72:5005/user_info
+:two: http://162.55.220.72:5005/user_info
 
 req. (RAW JSON)
 
@@ -345,7 +350,7 @@ Resp.
 
 ---
 
-3. http://162.55.220.72:5005/new_data
+:three: http://162.55.220.72:5005/new_data
 
 req.
 
@@ -373,7 +378,7 @@ Resp.
 4. проверить, что 2-й элемент массива salary больше 1-го и 0-го
 ---
 
-4. http://162.55.220.72:5005/test_pet_info
+:four: http://162.55.220.72:5005/test_pet_info
 
 req.
 
@@ -403,7 +408,7 @@ Resp.
 
 ---
 
-5. http://162.55.220.72:5005/get_test_user
+:five: http://162.55.220.72:5005/get_test_user
 
 req.
 
@@ -435,7 +440,7 @@ Resp.
 
 ---
 
-6. http://162.55.220.72:5005/currency
+:six: http://162.55.220.72:5005/currency
 
 req.
 POST
@@ -461,7 +466,7 @@ Resp. Передаётся список массив объектов.
 
 ---
 
-7. http://162.55.220.72:5005/curr_byn
+:seven: http://162.55.220.72:5005/curr_byn
 
 req.
 
@@ -543,7 +548,7 @@ Resp.
 | **1хх**  | Информационные сообщения | `102` — запрос принят, но обработка ещё не завершена                    |
 | **2хх**   | Сообщения об успехе      | `200` — ОК, запрос обработан успешно.                                   |
 | **3хх**   | Перенаправление          | `302` — запрошенный ресурс временно доступен по другому адресу.         |
-| **4хх**   | Клиентские ошибки        | `403` Forbidden — у клиента недостаточно прав, чтобы получить доступ к данному ресурсу.         |
+|:four: :heavy_multiplication_x: :heavy_multiplication_x:   | Клиентские ошибки        | `403` Forbidden — у клиента недостаточно прав, чтобы получить доступ к данному ресурсу.         |
 | **5хх**   | Ошибки сервера           | `500` Internal Server Error — внутренняя ошибка сервера.                 |
 
   
