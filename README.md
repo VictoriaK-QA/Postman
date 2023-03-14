@@ -32,6 +32,7 @@ response:
     “Str”
 ]
 ```
+![EP_1](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_1.JPG)
 
 ---
 
