@@ -58,7 +58,7 @@ response:
           'family': {'children': [['Alex', 24], ['Kate', 12]],
                      'u_salary_1_5_year': salary * 4}}
 ```
-
+![EP_2](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_2.JPG)
 
 ---
 
@@ -83,7 +83,7 @@ response:
           'daily_food': weight * 0.012,
           'daily_sleep': weight * 2.5}
 ```
-
+![EP_3](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_3.JPG)
 
 ---
 
@@ -112,6 +112,7 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
 ```
+![EP_4](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_4.JPG)
 
 ---
 
@@ -141,7 +142,7 @@ response:
                      'u_salary_1_5_year': salary * 4}
           }
 ```
-
+![EP_5](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_5.JPG)
 
 ---
 
@@ -164,6 +165,7 @@ response:
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
 ```
+![EP_6](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_6.JPG)
 
 ---
 
@@ -191,6 +193,7 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
 ```
+![EP_7](https://github.com/VictoriaK-QA/Postman/blob/main/Postman_screenshot/EP_7.JPG)
 
 </details>
 
