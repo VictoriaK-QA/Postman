@@ -223,6 +223,8 @@ pm.test("Body matches string", function () {
 });
 ```
 
+---
+
 :two: http://162.55.220.72:5005/user_info_3
 1. Отправить запрос.
 2. Статус код 200
@@ -316,6 +318,8 @@ pm.test("Req_Resp_u_salary_1_5_year_check", function () {
     pm.expect(jsonData.family.u_salary_1_5_year).to.eql(req.salary*4);
 });
 ```
+
+---
 
 :three: http://162.55.220.72:5005/object_info_3
 1. Отправить запрос.
