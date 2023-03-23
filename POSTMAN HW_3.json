@@ -785,38 +785,4 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "6 /currency",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "auth_token",
-									"value": "{{token}}",
-									"type": "default"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://162.55.220.72:5005/currency",
-							"protocol": "http",
-							"host": [
-								"162",
-								"55",
-								"220",
-								"72"
-							],
-							"port": "5005",
-							"path": [
-								"currency"
-							]
-						}
-					},
-					"response": []
 				}
-			]
-		}
