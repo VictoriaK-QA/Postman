@@ -26,7 +26,7 @@ request url params:
  age: int
 
 response:
-``` 
+``` json
 [
     “Str”,
     “Str”
@@ -51,7 +51,7 @@ request form data:
  salary: int
 
 response: 
-```
+```json
 {'name': name,
           'age': age,
           'salary': salary,
@@ -78,7 +78,7 @@ request url params:
  weight: int
 
 response: 
-```
+```json
 {'name': name,
           'age': age,
           'daily_food': weight * 0.012,
@@ -103,7 +103,7 @@ request url params:
  salary: int
 
 response: 
-```
+```json
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
           'qa_salary_after_12_months': salary * 2.7,
@@ -133,7 +133,7 @@ request url params:
  salary: int
 
 response: 
-```
+```json
 {'name': name,
           'age': age,
           'salary': salary,
@@ -164,7 +164,7 @@ request url params:
  salary: int
 
 response:
-``` 
+```json 
 {'name': name,
           'age': int(age),
           'salary': [salary, str(salary * 2), str(salary * 3)]}
@@ -187,7 +187,7 @@ request form data:
  salary: int
 
 response: 
-```
+```json
 {'start_qa_salary': salary,
           'qa_salary_after_6_months': salary * 2,
           'qa_salary_after_12_months': salary * 2.7,
@@ -211,13 +211,13 @@ response:
 :one: http://162.55.220.72:5005/first
 1. Отправить запрос.
 2. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 3. Проверить, что в body приходит правильный string.
-```
+```javascript
 pm.test("Body matches string", function () {
     pm.expect(pm.response.text()).to.include("This is the first responce from server!ss");
 });
@@ -228,17 +228,17 @@ pm.test("Body matches string", function () {
 :two: http://162.55.220.72:5005/user_info_3
 1. Отправить запрос.
 2. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 3. Спарсить response body в json.
-```
+```javascript
 var jsonData = pm.response.json();
 ```
 4. Проверить, что name в ответе равно name s request (name вбить руками.)
-```
+```javascript
 var resp_name = jsonData.name;
 console.log("resp_name = " + resp_name)
 pm.test("NAME_check", function () {
@@ -246,7 +246,7 @@ pm.test("NAME_check", function () {
 });
 ```
 5. Проверить, что age в ответе равно age s request (age вбить руками.)
-```
+```javascript
 var resp_age = jsonData.age;
 var resp_age = +resp_age;
 console.log("resp_age = " +resp_age)
@@ -255,7 +255,7 @@ pm.test("AGE_check", function () {
 });
 ```
 6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)
-```
+```javascript
 var resp_salary = jsonData.salary;
 console.log("resp_salary = " +resp_salary)
 pm.test("SALARY_check", function () {
@@ -263,11 +263,11 @@ pm.test("SALARY_check", function () {
 });
 ```
 7. Спарсить request.
-```
+```javascript
 var req = request.data;
 ```
 8. Проверить, что name в ответе равно name s request (name забрать из request.)
-```
+```javascript
 var req_name = req.name;
 
 console.log("resp_name = " + resp_name)
@@ -278,7 +278,7 @@ pm.test("Req_Resp_NAME_check", function () {
 });
 ```
 9. Проверить, что age в ответе равно age s request (age забрать из request.)
-```
+```javascript
 var req_age = req.age;
 var req_age = +req_age;
 
@@ -290,7 +290,7 @@ pm.test("Req_Resp_AGE_check", function () {
 });
 ```
 10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
-```
+```javascript
 var req_salary = req.salary;
 var req_salary = +req_salary;
 
@@ -302,12 +302,12 @@ pm.test("Req_Resp_SALARY_check", function () {
 });
 ```
 11. Вывести в консоль параметр family из response.
-```
+```javascript
 var resp_family = jsonData.family
 console.log(resp_family)
 ```
 12. Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)
-```
+```javascript
 var resp_u_salary_1_5_year = jsonData.family.u_salary_1_5_year;
 
 var req = request.data;
@@ -324,57 +324,57 @@ pm.test("Req_Resp_u_salary_1_5_year_check", function () {
 :three: http://162.55.220.72:5005/object_info_3
 1. Отправить запрос.
 2. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 3. Спарсить response body в json.
-```
+```javascript
 var resp = pm.response.json();
 ```
 4. Спарсить request.
-```
+```javascript
 var req = pm.request.url.query.toObject();
 console.log("текст");
 console.log(req.name);
 ```
 5. Проверить, что name в ответе равно name s request (name забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_NAME_check", function () {
     pm.expect(resp.name).to.eql(req.name);
 });
 ```
 6. Проверить, что age в ответе равно age s request (age забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_AGE_check", function () {
     pm.expect(resp.age).to.eql(req.age);
 });
 ```
 7. Проверить, что salary в ответе равно salary s request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_SALARY_check", function () {
     pm.expect(resp.salary).to.eql(+req.salary);
 });
 ```
 8. Вывести в консоль параметр family из response.
-```
+```javascript
 console.log(resp.family)
 ```
 9. Проверить, что у параметра dog есть параметры name.
-```
+```javascript
 pm.test("dog_parameter_check_name", function () {
     pm.expect(resp.family.pets.dog).to.have.property("name");
 });
 ```
 10. Проверить, что у параметра dog есть параметры age.
-```
+```javascript
 pm.test("dog_parameter_check_age", function () {
     pm.expect(resp.family.pets.dog).to.have.property("age");
 });
 ```
 11. Проверить, что параметр name имеет значение Luky.
-```
+```javascript
 console.log(resp.family.pets.dog.name)
 
 pm.test("dog_name_Luky", function () {
@@ -382,7 +382,7 @@ pm.test("dog_name_Luky", function () {
 });
 ```
 12. Проверить, что параметр age имеет значение 4.
-```
+```javascript
 console.log(resp.family.pets.dog.age)
 
 pm.test("dog_age_4", function () {
@@ -395,83 +395,83 @@ pm.test("dog_age_4", function () {
 :four: http://162.55.220.72:5005/object_info_4
 1. Отправить запрос.
 2. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 3. Спарсить response body в json.
-```
+```javascript
 var resp = pm.response.json();
 ```
 4. Спарсить request.
-```
+```javascript
 var req = pm.request.url.query.toObject();
 ```
 5. Проверить, что name в ответе равно name s request (name забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_NAME_check", function () {
     pm.expect(resp.name).to.eql(req.name);
 });
 ```
 6. Проверить, что age в ответе равно age из request (age забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_AGE_check", function () {
     pm.expect(resp.age).to.eql(+req.age);
 });
 ```
 7. Вывести в консоль параметр salary из request.
-```
+```javascript
 console.log(req.salary)
 ```
 8. Вывести в консоль параметр salary из response.
-```
+```javascript
 console.log(resp.salary)
 ```
 9. Вывести в консоль 0-й элемент параметра salary из response.
-```
+```javascript
 console.log(resp.salary[0])
 ```
 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.
-```
+```javascript
 console.log(resp.salary[1])
 ```
 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.
-```
+```javascript
 console.log(resp.salary[2])
 ```
 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_0_SALARY_check", function () {
     pm.expect(+resp.salary[0]).to.eql(+req.salary);
 });
 ```
 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_1_SALARY_check", function () {
     pm.expect(+resp.salary[1]).to.eql(+req.salary*2);
 });
 ```
 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_2_SALARY_check", function () {
     pm.expect(+resp.salary[2]).to.eql(+req.salary*3);
 });
 ```
 15. Создать в окружении переменную name
-```
+```javascript
 pm.environment.get("name");
 ```
 16. Создать в окружении переменную age
-```
+```javascript
 pm.environment.get("age");
 ```
 17. Создать в окружении переменную salary
-```
+```javascript
 pm.environment.get("salary");
 ```
 18. Передать в окружение переменную name
-```
+```javascript
 var jsonData = pm.response.json();
 var resp_name = jsonData.name
 console.log(resp_name)
@@ -479,21 +479,21 @@ console.log(resp_name)
 pm.environment.set("name", resp_name);
 ```
 19. Передать в окружение переменную age
-```
+```javascript
 var resp_age = jsonData.age
 console.log(resp_age)
 
 pm.environment.set("age", resp_age);
 ```
 20. Передать в окружение переменную salary
-```
+```javascript
 var resp_salary = jsonData.salary
 console.log(resp_salary)
 
 pm.environment.set("salary", resp_salary[1]);
 ```
 21. :star::star::star: Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.
-```
+```javascript
 console.log("цикл");
 for (var s in resp_salary){
     console.log(resp_salary[s])
@@ -508,105 +508,105 @@ for (var s in resp_salary){
 3. Вставить параметр name из окружения в name
 4. Отправить запрос.
 5. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 6. Спарсить response body в json.
-```
+```javascript
 var resp = pm.response.json();
 ```
 7. Спарсить request.
-```
+```javascript
 var req = request.data;
 ```
 8. Проверить, что json response имеет параметр start_qa_salary
-```
+```javascript
 pm.test("json_response_check_start_qa_salary", function () {
     pm.expect(resp).to.have.property("start_qa_salary");
 });
 ```
 9. Проверить, что json response имеет параметр qa_salary_after_6_months
-```
+```javascript
 pm.test("json_response_qa_salary_after_6_months", function () {
     pm.expect(resp).to.have.property("qa_salary_after_6_months");
 });
 ```
 10. Проверить, что json response имеет параметр qa_salary_after_12_months
-```
+```javascript
 pm.test("json_response_qa_salary_after_12_months", function () {
     pm.expect(resp).to.have.property("qa_salary_after_12_months");
 });
 ```
 11. Проверить, что json response имеет параметр qa_salary_after_1.5_year
-```
+```javascript
 pm.test("json_response_qa_salary_after_1.5_year", function () {
     pm.expect(resp).to.have.property("qa_salary_after_1.5_year");
 });
 ```
 12. Проверить, что json response имеет параметр qa_salary_after_3.5_years
-```
+```javascript
 pm.test("json_response_qa_salary_after_3.5_years", function () {
     pm.expect(resp).to.have.property("qa_salary_after_3.5_years");
 });
 ```
 13. Проверить, что json response имеет параметр person
-```
+```javascript
 pm.test("json_response_person", function () {
     pm.expect(resp).to.have.property("person");
 });
 ```
 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_START_SALARY_check", function () {
     pm.expect(resp.start_qa_salary).to.eql(+req.salary);
 });
 ```
 15. Проверить, что параметр qa_salary_after_6_months равен salary*2 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_6_SALARY_check", function () {
     pm.expect(resp.qa_salary_after_6_months).to.eql(+req.salary*2);
 });
 ```
 16. Проверить, что параметр qa_salary_after_12_months равен salary*2.7 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_12_SALARY_check", function () {
     pm.expect(resp.qa_salary_after_12_months).to.eql(+req.salary*2.7);
 });
 ```
 17. Проверить, что параметр qa_salary_after_1.5_year равен salary*3.3 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_1.5year_SALARY_check", function () {
     pm.expect(resp['qa_salary_after_1.5_year']).to.eql(+req.salary*3.3);
 });
 ```
 18. Проверить, что параметр qa_salary_after_3.5_years равен salary*3.8 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_3.5years_SALARY_check", function () {
     pm.expect(resp['qa_salary_after_3.5_years']).to.eql(+req.salary*3.8);
 });
 ```
 19. Проверить, что в параметре person, 1-й элемент из u_name равен salary из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_person1_SALARY_check", function () {
     pm.expect(resp.person.u_name[1]).to.eql(+req.salary);
 });
 ```
 20. Проверить, что что параметр u_age равен age из request (age забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_personage_SALARY_check", function () {
     pm.expect(resp.person.u_age).to.eql(+req.age);
 });
 ```
 21. Проверить, что параметр u_salary_5_years равен salary*4.2 из request (salary забрать из request.)
-```
+```javascript
 pm.test("Req_Resp_5_years_SALARY_check", function () {
     pm.expect(resp.person.u_salary_5_years).to.eql(+req.salary*4.2);
 });
 ```
 22. :star::star::star: Написать цикл который выведет в консоль по порядку элементы списка из параметра person.
-```
+```javascript
 console.log("цикл");
 for (var p in resp.person){
     console.log(resp.person[p])
@@ -630,7 +630,7 @@ login : str (кроме /)
 password : str
 
 Приходящий токен необходимо передать во все остальные запросы.
-```
+```javascript
 var jsonData = pm.response.json();
 var resp_token = jsonData.token
 console.log(resp_token)
@@ -658,7 +658,7 @@ auth_token
 
 
 Resp.
-```
+```json
 {'start_qa_salary':salary,
  'qa_salary_after_6_months': salary * 2,
  'qa_salary_after_12_months': salary * 2.9,
@@ -670,13 +670,13 @@ Resp.
 
 Тесты:
 1. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 2. Проверка структуры json в ответе.
-```
+```javascript
 var schema = {
     "type": "object",
     "default": {},
@@ -799,7 +799,7 @@ pm.test("Проверка структуры json в ответе", function () 
 });
 ```
 3. В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.
-```
+```javascript
 var resp = pm.response.json();
 var req = request.data;
 
@@ -816,7 +816,7 @@ pm.test("SALARY_1_5_year", function () {
 });
 ```
 4. Достать значение из поля 'u_salary_1.5_year' и передать в поле salary запроса http://162.55.220.72:5005/get_test_user
-```
+```javascript
 var resp_salary_1_5_year = JSON.parse(resp.person.u_salary_1_5_year);
 console.log(resp_salary_1_5_year)
 pm.environment.get("salary_1_5");
@@ -840,7 +840,7 @@ name: str
 auth_token
 
 Resp.
-```
+```json
 {'name':name,
   'age': int(age),
   'salary': [salary, str(salary*2), str(salary*3)]}
@@ -848,13 +848,13 @@ Resp.
 
 Тесты:
 1. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 2. Проверка структуры json в ответе.
-```
+```javascript
 var schema = {
     "type": "object",
     "default": {},
@@ -927,7 +927,7 @@ pm.test("Проверка структуры json в ответе", function () 
 });
 ```
 3. В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.
-```
+```javascript
 // Спарсить response body в json
 var resp = pm.response.json();
 // // Спарсить request.
@@ -946,7 +946,7 @@ pm.test("SALARY[2]", function () {
 });
 ```
 4. проверить, что 2-й элемент массива salary больше 1-го и 0-го
-```
+```javascript
 pm.test("salary2 > salary1 && salary0", function () {
     const salCheck = resp.salary[2] > resp.salary[1] && resp.salary[2] > resp.salary[0]
     pm.expect(salCheck).to.be.true
@@ -970,7 +970,7 @@ auth_token
 
 
 Resp.
-```
+```json
 {'name': name,
  'age': age,
  'daily_food':weight * 0.012,
@@ -979,13 +979,13 @@ Resp.
 
 Тесты:
 1. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 2. Проверка структуры json в ответе.
-```
+```javascript
 var schema = {
     "type": "object",
     "default": {},
@@ -1043,7 +1043,7 @@ pm.test("Проверка структуры json в ответе", function () 
 });
 ```
 3. В ответе указаны коэффициенты умножения weight, напишите тесты по проверке правильности результата перемножения на коэффициент.
-```
+```javascript
 // Спарсить response body в json
 var resp = pm.response.json();
 // // Спарсить request.
@@ -1074,7 +1074,7 @@ name: str
 auth_token
 
 Resp.
-```
+```json
 {'name': name,
  'age':age,
  'salary': salary,
@@ -1085,13 +1085,13 @@ Resp.
 
 Тесты:
 1. Статус код 200
-```
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```
 2. Проверка структуры json в ответе.
-```
+```javascript
 var schema = {
     "type": "object",
     "default": {},
@@ -1226,7 +1226,7 @@ pm.test("Проверка структуры json в ответе", function () 
 });
 ```
 3. Проверить что занчение поля name = значению переменной name из окружения
-```
+```javascript
 // Спарсить response body в json
 var resp = pm.response.json();
 console.log(pm.environment.get("name"))
@@ -1235,7 +1235,7 @@ pm.test("enviroment_name", function () {
 });
 ```
 4. Проверить что занчение поля age в ответе соответсвует отправленному в запросе значению поля age
-```
+```javascript
 // // Спарсить request.
 var req = request.data;
 
@@ -1251,7 +1251,7 @@ req.
 POST
 auth_token
 Resp. Передаётся список массив объектов.
-```
+```json
 [
 {"Cur_Abbreviation": str,
  "Cur_ID": int,
@@ -1269,6 +1269,13 @@ Resp. Передаётся список массив объектов.
 1. Можете взять любой объект из присланного списка, используйте js random.
 В объекте возьмите Cur_ID и передать через окружение в следующий запрос.
 
+```javascript
+var resp = pm.response.json();
+var object = resp[_.random(resp.length)]
+pm.environment.set("Cur_ID", object.Cur_ID);
+console.log(object)
+```
+
 ---
 
 :seven: http://162.55.220.72:5005/curr_byn
@@ -1282,7 +1289,7 @@ auth_token
 curr_code: int
 
 Resp.
-```
+```json
 {
     "Cur_Abbreviation": str
     "Cur_ID": int,
@@ -1295,8 +1302,19 @@ Resp.
 
 Тесты:
 1. Статус код 200
+```javascript
+// 1. Статус код 200
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+```
 2. Проверка структуры json в ответе.
-
+```javascript
+var schema = {...}
+pm.test("Проверка структуры json в ответе", function () {
+    pm.response.to.have.jsonSchema(schema);
+});
+```
 ---
 :star: :star: :star:
 1. получить список валют
@@ -1305,7 +1323,7 @@ Resp.
 4. если возвращается 500 код, переходим к следующей итреации
 5. если получаем 200 код, проверяем response json на наличие поля "Cur_OfficialRate"
 6. если поле есть, пишем в консоль инфу про фалюту в виде response
-```
+```json
 {
     "Cur_Abbreviation": str
     "Cur_ID": int,
@@ -1316,7 +1334,40 @@ Resp.
 }
 ```
 7. переходим к следующей итерации
+```javascript
+// -----------------------------------------------------------
+// 1. получить список валют
+let respData = pm.response.json();
 
+let token = pm.environment.get('token');
+let cur_id = pm.environment.get("Cur_ID");
+
+// 2. итерировать список валют
+// 3. в каждой итерации отправлять запрос на сервер для получения курса каждой валюты
+for (let i = 0; i < respData.length; i++) {
+cur_id = respData[i].Cur_ID;
+// создаем константу с подзапросом
+const sendRequest = {
+    url: 'http://54.157.99.22:80/curr_byn',
+    method: 'POST', 
+    body: {
+        mode: 'urlencoded',
+        urlencoded: [{key: 'auth_token', value: token}, {key: 'curr_code', value: cur_id}]
+  }
+};
+// 4. если возвращается 500 код, переходим к следующей итреации
+// 5. если получаем 200 код, проверяем response json на наличие поля "Cur_OfficialRate"
+pm.sendRequest(sendRequest, (error, response) => {
+if (response.code === 200) {
+let resp_data = response.json();
+if (pm.expect(resp_data).to.have.property("Cur_OfficialRate")) {
+// 6. если поле есть, пишем в консоль инфу про фалюту в виде response
+console.log(resp_data.Cur_OfficialRate);
+       }
+    }
+});
+}
+```
 
 </details>
 
